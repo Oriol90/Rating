@@ -8,108 +8,97 @@ $(document).ready(function() {
     var spanFocs = document.getElementById("spanFocs");
     var clicat = false;
     var gris = "rgb(200, 200, 167)";
-    var container = document.getElementById("container");
 
-    function despintar(){
+    function despintar(x){
         if(!clicat){
-            flama4.style.color = gris;
-            flama5.style.color = gris;
-            flama3.style.color = gris;
-            flama2.style.color = gris;
-            flama1.style.color = gris;
+            var cont = 5;
+            while(cont != x){
+                document.getElementById("foc" + cont).style.color = gris;
+                cont = cont-1;
+            }
+        }
+    }
+
+    function pintar (x){
+        if(!clicat){
+            var cont = 0;
+            while(cont != x){
+                cont = cont+1;
+                document.getElementById("foc" + cont).style.color = "red";
+                
+            }
         }
     }
 
     window.addEventListener('click', e => {
         if(!spanFocs.contains(e.target)){
             clicat = false;
-            despintar();
+            despintar(0);
         }
     });
 
     flama1.addEventListener('click', e => {
-        flama1.style.color = "red";
-        flama2.style.color = gris;
-        flama3.style.color = gris;
-        flama4.style.color = gris;
-        flama5.style.color = gris;
+        clicat = false;
+        pintar(1);
+        despintar(1);
         clicat = true;
     });
 
     flama2.addEventListener('click', e => {
-        flama1.style.color = "red";
-        flama2.style.color = "red";
-        flama3.style.color = gris;
-        flama4.style.color = gris;
-        flama5.style.color = gris;
+        clicat = false;
+        pintar(2);
+        despintar(2);
         clicat = true;
     });
     
     flama3.addEventListener('click', e => {
-        flama1.style.color = "red";
-        flama2.style.color = "red";
-        flama3.style.color = "red";
-        flama4.style.color = gris;
-        flama5.style.color = gris;
+        clicat = false;
+        pintar(3);
+        despintar(3);
         clicat = true;
     });
     
     flama4.addEventListener('click', e => {
-        flama1.style.color = "red";
-        flama2.style.color = "red";
-        flama3.style.color = "red";
-        flama4.style.color = "red";
-        flama5.style.color = gris;
+        clicat = false;
+        pintar(4);
+        despintar(4);
         clicat = true;
     });
     
     flama5.addEventListener('click', e => {
-        flama1.style.color = "red";
-        flama2.style.color = "red";
-        flama3.style.color = "red";
-        flama4.style.color = "red";
-        flama5.style.color = "red";
+        clicat = false;
+        pintar(5);
         clicat = true;
     });
 
     flama1.addEventListener('mouseenter', e => {
         if(!clicat){
-            flama1.style.color = "red";
+            pintar(1);
         }
     });
 
     flama2.addEventListener('mouseenter', e => {
         if(!clicat){
-            flama1.style.color = "red";
-            flama2.style.color = "red";
+            pintar(2);
         }
     });
 
     flama3.addEventListener('mouseenter', e => {
         if(!clicat){
-            flama1.style.color = "red";
-            flama2.style.color = "red";
-            flama3.style.color = "red";
+            pintar(3);
         }
     });
 
     flama4.addEventListener('mouseenter', e => {
         if(!clicat){
-            flama1.style.color = "red";
-            flama2.style.color = "red";
-            flama3.style.color = "red";
-            flama4.style.color = "red";
+            pintar(4);
         }
         
     });
 
     flama5.addEventListener('mouseenter', e => {
         if(!clicat){
-            flama1.style.color = "red";
-            flama2.style.color = "red";
-            flama3.style.color = "red";
-            flama4.style.color = "red";
-            flama5.style.color = "red";
+            pintar(5);
         }
     });
 
@@ -145,7 +134,7 @@ $(document).ready(function() {
 
     spanFocs.addEventListener('mouseleave', e => {
         if(!clicat){
-            despintar();
+            despintar(0);
         }
     });
 
