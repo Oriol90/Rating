@@ -25,7 +25,6 @@ $(document).ready(function() {
             while(cont != x){
                 cont = cont+1;
                 document.getElementById("foc" + cont).style.color = "red";
-                
             }
         }
     }
