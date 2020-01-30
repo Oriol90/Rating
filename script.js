@@ -5,11 +5,10 @@ $(document).ready(function() {
     var flama3 = document.getElementById("foc3");
     var flama4 = document.getElementById("foc4");
     var flama5 = document.getElementById("foc5");
-    var rate = document.getElementById("rate");
     var spanFocs = document.getElementById("spanFocs");
     var clicat = false;
-    var container = document.getElementById("container");
     var gris = "rgb(200, 200, 167)";
+    var container = document.getElementById("container");
 
     function despintar(){
         if(!clicat){
@@ -20,6 +19,13 @@ $(document).ready(function() {
             flama1.style.color = gris;
         }
     }
+
+    window.addEventListener('click', e => {
+        if(!spanFocs.contains(e.target)){
+            clicat = false;
+            despintar();
+        }
+    });
 
     flama1.addEventListener('click', e => {
         flama1.style.color = "red";
