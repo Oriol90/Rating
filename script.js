@@ -1,11 +1,7 @@
 $(document).ready(function() {
 
-    var flama1 = document.getElementById("foc1");
-    var flama2 = document.getElementById("foc2");
-    var flama3 = document.getElementById("foc3");
-    var flama4 = document.getElementById("foc4");
-    var flama5 = document.getElementById("foc5");
     var spanFocs = document.getElementById("spanFocs");
+    var flames = document.getElementsByClassName("foc");
     var clicat = false;
     var gris = "rgb(200, 200, 167)";
 
@@ -36,100 +32,35 @@ $(document).ready(function() {
         }
     });
 
-    flama1.addEventListener('click', e => {
-        clicat = false;
-        pintar(1);
-        despintar(1);
-        clicat = true;
-    });
+    for(i=0; i<flames.length; i++){
 
-    flama2.addEventListener('click', e => {
-        clicat = false;
-        pintar(2);
-        despintar(2);
-        clicat = true;
-    });
-    
-    flama3.addEventListener('click', e => {
-        clicat = false;
-        pintar(3);
-        despintar(3);
-        clicat = true;
-    });
-    
-    flama4.addEventListener('click', e => {
-        clicat = false;
-        pintar(4);
-        despintar(4);
-        clicat = true;
-    });
-    
-    flama5.addEventListener('click', e => {
-        clicat = false;
-        pintar(5);
-        clicat = true;
-    });
+        flames[i].addEventListener('click', e => {
+            clicat = false;
+            e = e || window.event;
+            var target = e.target || e.srcElement,
+            x = target.id.charAt(3);
+            pintar(x);
+            despintar(x);
+            clicat = true;
+        });
 
-    flama1.addEventListener('mouseenter', e => {
-        if(!clicat){
-            pintar(1);
-        }
-    });
+        flames[i].addEventListener('mouseenter', e => {
+            if(!clicat){
+                e = e || window.event;
+                var target = e.target || e.srcElement,
+                x = target.id.charAt(3);
+                pintar(x);
+            }
+        });
 
-    flama2.addEventListener('mouseenter', e => {
-        if(!clicat){
-            pintar(2);
-        }
-    });
-
-    flama3.addEventListener('mouseenter', e => {
-        if(!clicat){
-            pintar(3);
-        }
-    });
-
-    flama4.addEventListener('mouseenter', e => {
-        if(!clicat){
-            pintar(4);
-        }
-        
-    });
-
-    flama5.addEventListener('mouseenter', e => {
-        if(!clicat){
-            pintar(5);
-        }
-    });
-
-    flama1.addEventListener('mouseleave', e => {
-        if(!clicat){
-            flama1.style.color = gris;
-        }
-    });
-
-    flama2.addEventListener('mouseleave', e => {
-        if(!clicat){
-            flama2.style.color = gris;
-        }
-    });
-
-    flama3.addEventListener('mouseleave', e => {
-        if(!clicat){
-            flama3.style.color = gris;
-        }
-    });
-
-    flama4.addEventListener('mouseleave', e => {
-        if(!clicat){
-            flama4.style.color = gris;
-        }
-    });
-
-    flama5.addEventListener('mouseleave', e => {
-        if(!clicat){
-            flama5.style.color = gris;
-        }
-    });
+        flames[i].addEventListener('mouseleave', e => {
+            if(!clicat){
+                e = e || window.event;
+                var target = e.target || e.srcElement
+                target.style.color = gris;
+            }
+        });
+    }
 
     spanFocs.addEventListener('mouseleave', e => {
         if(!clicat){
